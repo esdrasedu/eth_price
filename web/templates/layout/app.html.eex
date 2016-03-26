@@ -7,29 +7,33 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello EthPrice!</title>
+    <title>EthPrice</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/bootstrap.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <p class="version">v<%= version %></p>
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-
-    </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="inner cover">
+            <%= render @view_module, @view_template, assigns %>
+          </div>
+          <div class="footer">
+            <div class="inner">
+              <p>Developed with <a href="http://phoenixframework.org">Phoenix framework</a>, by <a href="https://github.com/esdrasedu">@esdrasedu</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
+  <script src="<%= static_path(@conn, "/js/jquery.min.js") %>"></script>
+  <script src="<%= static_path(@conn, "/js/phoenix.js") %>"></script>
+  <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 </html>

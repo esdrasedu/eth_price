@@ -44,6 +44,7 @@ defmodule EthPrice.Web do
       import EthPrice.Router.Helpers
       import EthPrice.ErrorHelpers
       import EthPrice.Gettext
+      import Number.Currency
     end
   end
 
