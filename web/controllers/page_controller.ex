@@ -1,8 +1,7 @@
 defmodule EthPrice.PageController do
   use EthPrice.Web, :controller
 
-  def index(conn, %{"ethereum" => %{"value" => value_i}}) do
-    {value, _} = Float.parse("#{value_i}")
+  def index(conn, value) when is_float(value) do
     case CryptoCoins.price(value, :ETH_REAL) do
       {:ok, price} ->
         conn
@@ -16,6 +15,11 @@ defmodule EthPrice.PageController do
     end
   end
 
-  def index(conn, _), do: index(conn, %{"ethereum" => %{"value" => 1}})
+  def index(conn, %{"ethereum" => %{"value" => value}}) do
+    {value_f, _} = Float.parse("#{value}")
+    index(conn, value_f)
+  end
+
+  def index(conn, _), do: index(conn, 1.0)
 
 end

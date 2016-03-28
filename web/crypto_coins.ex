@@ -22,7 +22,7 @@ defmodule CryptoCoins do
   end
 
   def price(value, :BTC_ETH) do
-    case HTTPotion.get("https://poloniex.com/public?command=returnTicker") do
+    case HTTPotion.get("https://poloniex.com/public?command=returnTicker", [timeout: 10_000]) do
       %{status_code: 200, body: raw} ->
         %{"BTC_ETH" => %{"last" => last_change}} = :jsx.decode(raw, [:return_maps])
         {:ok, (String.to_float(last_change) * value)}
