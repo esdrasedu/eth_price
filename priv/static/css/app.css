@@ -65,15 +65,13 @@ body {
 /*
  * Price
  */
-.price {
+.price-holder {
   padding: 30px 0px;
-  font-size: 3em;
+  font-size: 30px;
 }
-.price > input {
-  width: 100px;
+.price-input {
   background: none;
   border: none;
-  text-align: right;
   outline: none;
 }
 
