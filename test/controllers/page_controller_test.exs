@@ -1,8 +1,29 @@
 defmodule EthPrice.PageControllerTest do
   use EthPrice.ConnCase
+  import Phoenix.HTML.Form
 
-  test "GET /", %{conn: conn} do
+  test "root route", %{conn: conn} do
     conn = get conn, "/"
-    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
+    {:safe, input} = text_input(:ethereum, :value, value: 1.0)
+    assert html_response(conn, 200) =~ input
   end
+
+  test "set param value with 1", %{conn: conn}  do
+    conn = get conn, "/", %{ethereum: %{value: "1"}}
+    {:safe, input} = text_input(:ethereum, :value, value: 1.0)
+    assert html_response(conn, 200) =~ input
+  end
+
+  test "set params value with 1.1", %{conn: conn}  do
+    conn = get conn, "/", %{ethereum: %{value: "1.1"}}
+    {:safe, input} = text_input(:ethereum, :value, value: 1.1)
+    assert html_response(conn, 200) =~ input
+  end
+
+  test "set params value empty", %{conn: conn}  do
+    conn = get conn, "/", %{ethereum: %{value: ""}}
+    {:safe, input} = text_input(:ethereum, :value, value: 1.0)
+    assert html_response(conn, 200) =~ input
+  end
+
 end

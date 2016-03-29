@@ -15,6 +15,8 @@ defmodule EthPrice.PageController do
     end
   end
 
+  def index(conn, %{"ethereum" => %{"value" => ""}}), do: index(conn, 1.0)
+
   def index(conn, %{"ethereum" => %{"value" => value}}) do
     {value_f, _} = Float.parse("#{value}")
     index(conn, value_f)
