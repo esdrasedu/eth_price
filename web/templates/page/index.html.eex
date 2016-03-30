@@ -1,6 +1,14 @@
 <form id="ethereum">
   <p><img src="/images/ethereum.png"></p>
-  <p class="price">
-    <%= text_input(:ethereum, :value, value: @ethereum[:value]) %> = <%= number_to_currency(@ethereum[:price], unit: "R$ ", separator: ",", delimiter: ".") %>
-  </p>
+      <div class="price-holder row">
+          <div class="col-md-5">
+              <%= text_input(:ethereum, :value, value: @ethereum[:value], class: "price-input text-center ") %>
+          </div>
+          <div class="col-md-2">
+              =
+          </div>
+          <div class="col-md-5">
+              <%= number_to_currency(@ethereum[:price], unit: "R$ ", separator: ",", delimiter: ".") %>
+          </div>
+      </div>
 </form>
