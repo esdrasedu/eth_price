@@ -35,7 +35,8 @@ defmodule EthPrice.Mixfile do
      {:cowboy, "~> 1.0"},
      {:number, "~> 0.4.1"},
      {:httpotion, "~> 2.2.0"},
-     {:jsx, "~> 2.8"}
+     {:jsx, "~> 2.8"},
+     {:exrm, "~> 1.0"}
     ]
   end
 end
