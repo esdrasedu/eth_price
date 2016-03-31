@@ -2,12 +2,12 @@
   <p><img src="/images/ethereum.png"></p>
       <div class="price-holder row">
           <div class="col-md-5">
-              <%= text_input(:ethereum, :value, value: @ethereum[:value], class: "price-input text-center ") %>
+              <%= text_input(:ethereum, :value, value: @ethereum[:value], class: "price-input text-right") %>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1">
               =
           </div>
-          <div class="col-md-5">
+          <div class="col-md-6 text-left">
               <%= number_to_currency(@ethereum[:price], unit: "R$ ", separator: ",", delimiter: ".") %>
           </div>
       </div>

@@ -74,6 +74,7 @@ body {
   font-size: 30px;
 }
 .price-input {
+  width: 100%;
   background: none;
   border: none;
   outline: none;
