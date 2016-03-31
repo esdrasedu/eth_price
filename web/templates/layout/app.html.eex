@@ -26,7 +26,7 @@
           </div>
           <div class="footer">
             <div class="inner">
-              <p>Developed with <a href="http://phoenixframework.org">Phoenix framework</a>, by <a href="https://github.com/esdrasedu">@esdrasedu</a>.</p>
+              <p>Developed with <a href="http://phoenixframework.org" target="_blank">Phoenix framework</a>, by <a href="https://github.com/esdrasedu/eth_price" target="_blank">@esdrasedu</a>.</p>
             </div>
           </div>
         </div>
