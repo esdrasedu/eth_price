@@ -2,7 +2,7 @@
   <p><img src="/images/ethereum.png"></p>
       <div class="price-holder row">
           <div class="col-md-5">
-              <%= text_input(:ethereum, :value, value: @ethereum[:value], class: "price-input text-right") %>
+              <%= text_input(:ethereum, :value, value: @ethereum[:value], class: "price-input") %>
           </div>
           <div class="col-md-1">
               =
