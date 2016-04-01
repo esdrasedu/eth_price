@@ -1,5 +1,7 @@
 # EthPrice
 
+[![Build Status](https://travis-ci.org/esdrasedu/eth_price.svg?branch=master)](https://travis-ci.org/esdrasedu/eth_price)
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
