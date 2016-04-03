@@ -5,7 +5,7 @@ cryptoclub.com.br
 ansible_python_interpreter=/usr/bin/python2
 ansible_ssh_private_key_file = "~/.ssh/id_rsa"
 ansible_ssh_user = root
-ansible_ssh_host = "104.131.1.225"
+ansible_ssh_host = "45.55.137.135"
 
 [app:children]
 production
