@@ -5,12 +5,12 @@ otp_release:
 - 18.2.1
 before_install:
 - uname -a
-- sudo apt-get -qq update
-- pip install ansible
+#- pip install ansible
 before_deploy:
 - export APP_VERSION=`mix run -e "IO.puts(EthPrice.Mixfile.project[:version])" --no-start`
 deploy:
   provider: releases
+  dist: "centos/6"
   user: esdrasedu
   file: rel/eth_price/releases/$APP_VERSION/eth_price.tar.gz
   skip_cleanup: true
