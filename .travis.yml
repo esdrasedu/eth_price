@@ -6,8 +6,9 @@ otp_release:
 before_install:
 - sudo apt-get update
 - sudo apt-get install software-properties-common
-- sudo apt-add-repository ppa:ansible/ansible
-- sudo apt-get install ansible
+- sudo apt-add-repository ppa:ansible/ansible -y
+- sudo apt-get update -qq
+- sudo apt-get install ansible -y
 before_deploy:
 - export APP_VERSION=`mix run -e "IO.puts(EthPrice.Mixfile.project[:version])" --no-start`
 - ansible-playbook -i dist/production dist/build.yml --connection=local
