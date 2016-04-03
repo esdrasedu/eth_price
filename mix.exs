@@ -17,7 +17,10 @@ defmodule EthPrice.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {EthPrice, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext, :httpotion]]
+     applications: [
+       :phoenix, :phoenix_html, :cowboy, :logger,
+       :gettext, :httpotion, :number, :jsx, :exrm
+     ]]
   end
 
   # Specifies which paths to compile per environment.
@@ -33,8 +36,8 @@ defmodule EthPrice.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:number, "~> 0.4.1"},
      {:httpotion, "~> 2.2.0"},
+     {:number, "~> 0.4.1"},
      {:jsx, "~> 2.8"},
      {:exrm, "~> 1.0"}
     ]

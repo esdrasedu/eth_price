@@ -1,5 +1,20 @@
 language: elixir
 elixir:
-  - 1.2.3
+- 1.2.3
 otp_release:
-  - 18.2.1
+- 18.2.1
+before_install:
+- uname -a
+#- pip install ansible
+before_deploy:
+- export APP_VERSION=`mix run -e "IO.puts(EthPrice.Mixfile.project[:version])" --no-start`
+deploy:
+  provider: releases
+  dist: "centos/6"
+  user: esdrasedu
+  file: rel/eth_price/releases/$APP_VERSION/eth_price.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
+  password:
+    secure: OqXylle1IJdPSP55ti/oCCYUb/f9PkQhXb4ZV98L1X29niMomNnDIculrpRGztMocj1R2jN6nnm9pZb0YrL7rOK1dnyYJnHQaKitRqnxUPvqIY8U71DdHiLXEu1dYjHw3JOAV1S9DjvGtNbZ22gzNPR66Qg9jLDi+lHCOrxUGg0qdzIoUO2+BlcS/6XaDpm6hcD2fH8JmeODNx4UdsfRdlGkDHlRik6WSV4ppRxNJyFe1a3CD9v4fYlVozTAMVsHUt/L1aZ0O8S0zUYwcj8vAJUxGyA4BGtTYCRz8uea5COj2u249EzNrMeUvDtJQzyI1iZgq01P7mKOMRrgA/jN8EFp2AwpGqDYAvD/9hrFIek2MguDffV9ce9hFlRpoXxgS3bV1XTU4W220cJCbZHzVApKMU91Tlf9WTil/J0JYWX6lgclZxF6M546MNkC2D4dhU6aA4Bn1Llw0ZkCPbj4loAsbktKqD4SeuMJ4LQ9uqeW/1ZrdJrUwemNnJjs/3dbQdqbtSCKAXBlbTlo8WvuwpIzIVC2r5gjvHtWoQP57Ott34MstLJP0PxNmFXMuGCQJI98ZkR3Eev01IJnB3HgE2ScwIIgHnDIgtUUZ6WiYqi2QLcrelJSRRczCpLdlmS2cfTLyhrxWL2d7j8QxIVdWPlUYGW3PcXV4ZqS2sNIaqM=

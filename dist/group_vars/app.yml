@@ -1,0 +1,3 @@
+app:
+  name: eth_price
+  dest: /srv/eth_price
