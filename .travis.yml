@@ -4,13 +4,15 @@ elixir:
 otp_release:
 - 18.2.1
 before_install:
-- uname -a
-#- pip install ansible
+- sudo apt-get update
+- sudo apt-get install software-properties-common
+- sudo apt-add-repository ppa:ansible/ansible
+- sudo apt-get install ansible
 before_deploy:
 - export APP_VERSION=`mix run -e "IO.puts(EthPrice.Mixfile.project[:version])" --no-start`
+- ansible-playbook -i dist/production dist/build.yml --connection=local
 deploy:
   provider: releases
-  dist: "centos/6"
   user: esdrasedu
   file: rel/eth_price/releases/$APP_VERSION/eth_price.tar.gz
   skip_cleanup: true
