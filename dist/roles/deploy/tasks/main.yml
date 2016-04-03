@@ -1,0 +1,52 @@
+- name: Create app destination
+  file: path={{ app.dest }} state=directory
+
+- name: Unzip Release
+  shell: tar -vzxf /tmp/{{ app.name }}_{{ version }}.tar.gz -C {{ app.dest }}
+
+- name: Get isAlive
+  command: "{{ app.dest }}/bin/{{ app.name }} ping"
+  register: isAlive
+  ignore_errors: yes
+
+- name: Stop application
+  shell: "{{ app.dest }}/bin/{{ app.name }} stop"
+  when: isAlive.rc == 0 and isHotDeploy is undefined
+  become: yes
+  become_method: sudo
+
+- name: Start application
+  shell: "{{ app.dest }}/bin/{{ app.name }} start"
+  when: isAlive.rc == 1 or isHotDeploy is undefined
+  become: yes
+  become_method: sudo
+  
+- name: Upgrade aplication
+  shell: "{{ app.dest }}/bin/{{ app.name }} upgrade \"{{ version }}\""
+  when: isAlive.rc == 0 and isHotDeploy is defined
+  become: yes
+  become_method: sudo
+
+- pause: seconds=10
+
+- name: Add seeds
+  shell: "{{ app.dest }}/bin/{{ app.name }} rpc Mix.Tasks.Ecto.Seed.run"
+  when: runSeeds is defined
+  become: yes
+  become_method: sudo
+
+- name: Path of migration
+  command: "{{ app.dest }}/bin/{{ app.name }} rpc Elixir.Mix.Ecto migrations_path \"['Elixir.{{ app.ecto }}.Repo'].\""
+  register: path_migrations
+  when: app.ecto is defined
+  become: yes
+  become_method: sudo
+
+- name: Migration
+  shell: "{{ app.dest }}/bin/{{ app.name }} rpc Elixir.Ecto.Migrator run \"['Elixir.{{ app.ecto }}.Repo', {{ path_migrations.stdout_lines[1] | regex_replace('\\\"', '\\\\\"') }}, up, [{all, true}]].\""
+  when: app.ecto is defined
+  become: yes
+  become_method: sudo
+
+- name: Remove tarball
+  file: path=/tmp/{{ app.name }}_{{ version }}.tar.gz state=absent

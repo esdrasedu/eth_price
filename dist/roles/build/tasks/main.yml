@@ -1,0 +1,20 @@
+- name: Update Hex
+  shell: yes | mix local.hex
+
+- name: Update Rebar
+  shell: yes | mix local.rebar
+
+- name: Get deps
+  shell: mix deps.get
+
+- name: Compile
+  shell: mix compile
+
+- name: Digest asset
+  shell: mix phoenix.digest
+
+- name: Unzip last release
+  shell: echo "TODO"
+
+- name: Build release
+  shell: yes | mix release

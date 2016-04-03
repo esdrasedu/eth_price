@@ -1,0 +1,5 @@
+- hosts: all 
+  roles:
+    - build
+  environment:
+    MIX_ENV: "{{ ENV }}"

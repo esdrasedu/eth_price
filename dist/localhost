@@ -1,2 +1,8 @@
 [localhost]
 localhost
+
+[localhost:vars]
+ansible_python_interpreter=/usr/bin/python2
+
+[app:children]
+localhost
