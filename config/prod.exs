@@ -15,6 +15,7 @@ config :eth_price, EthPrice.Endpoint,
   http: [port: 80],
   url: [host: "www.crytoclub.com.br", port: 80],
   cache_static_manifest: "priv/static/manifest.json",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   server: true
 
 # Do not print debug messages in production
@@ -63,4 +64,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
