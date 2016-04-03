@@ -4,19 +4,18 @@ elixir:
 otp_release:
 - 18.2.1
 before_deploy:
-- sudo apt-get update
-- sudo apt-get install software-properties-common
-- sudo apt-add-repository ppa:ansible/ansible -y
-- sudo apt-get update -qq
-- sudo apt-get install ansible -y
-- export APP_VERSION=`mix run -e "IO.puts(EthPrice.Mixfile.project[:version])" --no-start --no-compile --no-deps-check`
-- ansible-playbook -i dist/production dist/build.yml --connection=local
+  - sudo apt-get update
+  - sudo apt-get install software-properties-common
+  - sudo apt-add-repository ppa:ansible/ansible -y
+  - sudo apt-get update -qq
+  - sudo apt-get install ansible -y
+  - export APP_VERSION=`mix run -e "IO.puts(EthPrice.Mixfile.project[:version])" --no-start --no-compile --no-deps-check`
+  - ansible-playbook -i dist/production dist/build.yml --connection=local
 deploy:
   provider: releases
-  user: esdrasedu
+  api_key:
+    secure: asZTfGIgvK+duHRQMYFHJ01d3IVZmx1+JZ8gSQuF/S7+m74Q8V42QM/j2nSMxj9v84HZ79z+DDEtDxIfTMgilxDi0y6anglcn1t8/3djPIujUXJ0WtMJ7+nKGIhPdtQDQwTOqu4Z6ECUX2G/APDKSfaV5IOM1uwWkM7+Rzs71SkvAGbPE4WsGX1DwxRM8lfedleS7mfsIEahuBhSka6gzaf7mQjtrJEgcORx2oISMDhFHgg4P5ZfNxTCOe5iEaw09XC9SdjGT4wjH2Yej49713G7XfMiFmzN4BSQF4vh7/wRfzd/c9xrImGxnVS9y4IKI/fMN/B/OxBk+PWJTpHoRgasTdmPGIMgkbcorhis5x+0tZpUeFkAb5szx4vR+yWwWpksFNW96qaPJS9X7FAXDKmI0cFtvYwW3esrlKTiO6bz4cAMP9xvY+47g4pGzgsIDa3wO33hgQEnfKipcdWvwijpezsAilscAC7JoptXnPY5asaabSjudfgIixR5uwL4fkyc3S+KUJBNi6zpzp/r0g1J9pTcuJp6U3YCMF3GDjEmrPfWW19v7up4mqKdLcNu4Y6TufBVqglKNsG9XRXnbK4/xzvWKRNiiBO9/XFWJRr9pcUbFLH7j4Al74nU+c2+NJDsaN7LEub8uIWD4bBpqc+XrHeX+o8wOy2KFyn+k5c=
   file: rel/eth_price/releases/$APP_VERSION/eth_price.tar.gz
-  skip_cleanup: true
   on:
     tags: true
-  password:
-    secure: OqXylle1IJdPSP55ti/oCCYUb/f9PkQhXb4ZV98L1X29niMomNnDIculrpRGztMocj1R2jN6nnm9pZb0YrL7rOK1dnyYJnHQaKitRqnxUPvqIY8U71DdHiLXEu1dYjHw3JOAV1S9DjvGtNbZ22gzNPR66Qg9jLDi+lHCOrxUGg0qdzIoUO2+BlcS/6XaDpm6hcD2fH8JmeODNx4UdsfRdlGkDHlRik6WSV4ppRxNJyFe1a3CD9v4fYlVozTAMVsHUt/L1aZ0O8S0zUYwcj8vAJUxGyA4BGtTYCRz8uea5COj2u249EzNrMeUvDtJQzyI1iZgq01P7mKOMRrgA/jN8EFp2AwpGqDYAvD/9hrFIek2MguDffV9ce9hFlRpoXxgS3bV1XTU4W220cJCbZHzVApKMU91Tlf9WTil/J0JYWX6lgclZxF6M546MNkC2D4dhU6aA4Bn1Llw0ZkCPbj4loAsbktKqD4SeuMJ4LQ9uqeW/1ZrdJrUwemNnJjs/3dbQdqbtSCKAXBlbTlo8WvuwpIzIVC2r5gjvHtWoQP57Ott34MstLJP0PxNmFXMuGCQJI98ZkR3Eev01IJnB3HgE2ScwIIgHnDIgtUUZ6WiYqi2QLcrelJSRRczCpLdlmS2cfTLyhrxWL2d7j8QxIVdWPlUYGW3PcXV4ZqS2sNIaqM=
+    repo: esdrasedu/eth_price
