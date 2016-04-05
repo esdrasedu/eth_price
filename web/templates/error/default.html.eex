@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EthPrice</title>
+  </head>
+  <body style="text-align: center">
+    <h1><%= @error %></h1>
+    <img src="https://media.giphy.com/media/gngO1gmBhS9na/giphy.gif" style="width: 805px; height: 402px" width="805" height="402">
+  </body>
+</html>
