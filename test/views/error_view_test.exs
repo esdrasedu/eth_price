@@ -5,17 +5,14 @@ defmodule EthPrice.ErrorViewTest do
   import Phoenix.View
 
   test "renders 404.html" do
-    assert render_to_string(EthPrice.ErrorView, "404.html", []) ==
-           "Page not found"
+    assert render_to_string(EthPrice.ErrorView, "404.html", []) =~ "Where&#39;s my page?"
   end
 
   test "render 500.html" do
-    assert render_to_string(EthPrice.ErrorView, "500.html", []) ==
-           "Server internal error"
+    assert render_to_string(EthPrice.ErrorView, "500.html", []) =~ "What&#39;s happening?"
   end
 
   test "render any other" do
-    assert render_to_string(EthPrice.ErrorView, "505.html", []) ==
-           "Server internal error"
+    assert render_to_string(EthPrice.ErrorView, "default.html", %{error: "Test Error"}) =~ "Test Error"
   end
 end
