@@ -14,3 +14,6 @@ erl_crash.dump
 # secrets file as long as you replace its contents by environment
 # variables.
 /config/prod.secret.exs
+/dist/eth_price.pem
+/dist/eth_price.pem.pub
+/dist/*.retry
