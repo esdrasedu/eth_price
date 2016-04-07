@@ -5,7 +5,6 @@ cryptoclub.com.br
 ansible_python_interpreter=/usr/bin/python2
 ansible_ssh_private_key_file = "eth_price.pem"
 ansible_ssh_user = root
-ansible_ssh_host = "45.55.137.135"
 
 [app:children]
 production
