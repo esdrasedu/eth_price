@@ -23,5 +23,6 @@ deploy:
     repo: esdrasedu/eth_price
 after_deploy:
   - openssl aes-256-cbc -K $encrypted_4eca667de08e_key -iv $encrypted_4eca667de08e_iv -in dist/eth_price.pem.enc -out dist/eth_price.pem -d
+  - sudo chmod 600 dist/eth_price.pem
   - scp -i dist/eth_price.pem rel/eth_price/releases/$APP_VERSION/eth_price.tar.gz root@cryptoclub.com.br:/tmp/eth_price_$APP_VERSION.tar.gz 
   - ansible-playbook -i dist/production dist/deploy.yml --extra-vars "version=$PATH_VERSION"
