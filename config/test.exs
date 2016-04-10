@@ -8,3 +8,5 @@ config :eth_price, EthPrice.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :honeybadger, environment_name: :test
