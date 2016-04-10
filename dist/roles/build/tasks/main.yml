@@ -14,7 +14,8 @@
   shell: mix phoenix.digest
 
 - name: Unzip last release
-  shell: echo "TODO"
+  shell: tar -vzxf {{ latest_tallbar }} -C /rel/eth_price
+  when: lastest_tallbar is defined
 
 - name: Build release
   shell: yes | mix release

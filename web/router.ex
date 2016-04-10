@@ -1,5 +1,6 @@
 defmodule EthPrice.Router do
   use EthPrice.Web, :router
+  use Honeybadger.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]

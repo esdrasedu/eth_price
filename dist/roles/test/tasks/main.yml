@@ -1,0 +1,14 @@
+- name: Update Hex
+  shell: yes | mix local.hex
+
+- name: Update Rebar
+  shell: yes | mix local.rebar
+
+- name: Get deps
+  shell: mix deps.get
+
+- name: Compile
+  shell: mix compile
+
+- name: Run tests
+  shell: mix test
