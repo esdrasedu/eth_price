@@ -3,7 +3,7 @@ defmodule EthPrice.Mixfile do
 
   def project do
     [app: :eth_price,
-     version: "0.0.2",
+     version: "0.0.3",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -34,6 +34,7 @@ defmodule EthPrice.Mixfile do
     [{:phoenix, "~> 1.1.4"},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:honeybadger, "~> 0.1"}
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      {:httpotion, "~> 2.2.0"},
