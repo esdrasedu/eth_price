@@ -18,7 +18,7 @@ defmodule EthPrice.Mixfile do
   def application do
     [mod: {EthPrice, []},
      applications: [
-       :phoenix, :phoenix_html, :cowboy, :logger,
+       :phoenix, :phoenix_html, :cowboy, :honeybadger, :logger,
        :gettext, :httpotion, :number, :jsx, :exrm
      ]]
   end
