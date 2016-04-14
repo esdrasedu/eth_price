@@ -18,8 +18,14 @@ defmodule EthPrice.PageController do
   def index(conn, %{"ethereum" => %{"value" => ""}}), do: index(conn, 1.0)
 
   def index(conn, %{"ethereum" => %{"value" => value}}) do
-    {value_f, _} = Float.parse("#{value}")
-    index(conn, value_f)
+    case Float.parse("#{value}") do
+      :error ->
+        conn
+        |> put_flash(:error, "Bro, put only numbers")
+        |> index(1)
+      {value_f, _} ->
+        index(conn, value_f)
+    end
   end
 
   def index(conn, _), do: index(conn, 1.0)
