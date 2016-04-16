@@ -26,4 +26,9 @@ defmodule EthPrice.PageControllerTest do
     assert html_response(conn, 200) =~ input
   end
 
+  test "set params value NaN", %{conn: conn}  do
+    conn = get conn, "/", %{ethereum: %{value: "a"}}
+    assert html_response(conn, 200) =~ "Bro, put only numbers"
+  end
+
 end
