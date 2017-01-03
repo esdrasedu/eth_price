@@ -4,7 +4,7 @@ defmodule EthPrice.Mixfile do
   def project do
     [app: :eth_price,
      version: "0.0.4",
-     elixir: "~> 1.0",
+     elixir: "~> 1.3",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -31,13 +31,13 @@ defmodule EthPrice.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.1.4"},
-     {:phoenix_html, "~> 2.4"},
+    [{:phoenix, "~> 1.2.1"},
+     {:phoenix_html, "~> 2.8"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:honeybadger, "~> 0.1"},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:httpotion, "~> 2.2.0"},
+     {:httpotion, "~> 3.0.1"},
      {:number, "~> 0.4.1"},
      {:jsx, "~> 2.8"},
      {:exrm, "~> 1.0"}
